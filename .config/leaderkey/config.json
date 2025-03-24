@@ -1,0 +1,263 @@
+{
+  "actions" : [
+    {
+      "actions" : [
+        {
+          "key" : "e",
+          "label" : "",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+        },
+        {
+          "key" : "p",
+          "label" : "(P)arty !!!",
+          "type" : "url",
+          "value" : "raycast://confetti"
+        },
+        {
+          "key" : "c",
+          "label" : "Open (C)amera",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/system/open-camera"
+        }
+      ],
+      "key" : "r",
+      "label" : "(R)aycast",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "i",
+          "label" : "(I)ntelliJ IDEA",
+          "type" : "application",
+          "value" : "/Applications/IntelliJ IDEA.app"
+        },
+        {
+          "key" : "x",
+          "label" : "E(x)cel",
+          "type" : "application",
+          "value" : "/Applications/Microsoft Excel.app"
+        },
+        {
+          "key" : "u",
+          "label" : "Anypoint St(U)dio",
+          "type" : "application",
+          "value" : "/Applications/AnypointStudio.app"
+        },
+        {
+          "key" : "a",
+          "label" : "(A)lacritty",
+          "type" : "application",
+          "value" : "/Applications/Alacritty.app"
+        },
+        {
+          "key" : "t",
+          "label" : "(T)eams",
+          "type" : "application",
+          "value" : "/Applications/Microsoft Teams.app"
+        },
+        {
+          "key" : "o",
+          "label" : "(O)utlook",
+          "type" : "application",
+          "value" : "/Applications/Microsoft Outlook.app"
+        },
+        {
+          "key" : "n",
+          "label" : "One(N)ote",
+          "type" : "application",
+          "value" : "/Applications/Microsoft OneNote.app"
+        },
+        {
+          "key" : "g",
+          "label" : "Fi(g)ma",
+          "type" : "application",
+          "value" : "/Applications/Figma.app"
+        },
+        {
+          "key" : "f",
+          "label" : "(F)inder",
+          "type" : "application",
+          "value" : "/System/Library/CoreServices/Finder.app"
+        },
+        {
+          "key" : "p",
+          "label" : "(P)ostman",
+          "type" : "application",
+          "value" : "/Applications/Postman.app"
+        },
+        {
+          "key" : "r",
+          "label" : "Advanced(R)estClient",
+          "type" : "application",
+          "value" : "/Applications/AdvancedRestClient.app"
+        },
+        {
+          "key" : "c",
+          "label" : "(C)hrome",
+          "type" : "application",
+          "value" : "/Applications/Google Chrome.app"
+        },
+        {
+          "key" : "e",
+          "label" : "Text(E)dit",
+          "type" : "application",
+          "value" : "/System/Applications/TextEdit.app"
+        },
+        {
+          "key" : "d",
+          "label" : "Rancher (D)estktop",
+          "type" : "application",
+          "value" : "/Applications/Rancher Desktop.app"
+        }
+      ],
+      "key" : " ",
+      "label" : "Application",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "h",
+          "label" : "Move Window Left",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace move left"
+        },
+        {
+          "key" : "j",
+          "label" : "Move Window Down",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace move down"
+        },
+        {
+          "key" : "k",
+          "label" : "Move Window Up",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace move up"
+        },
+        {
+          "key" : "l",
+          "label" : "Move Window Right",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace move right"
+        },
+        {
+          "key" : "/",
+          "label" : "Tile",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace layout tiles horizontal vertical"
+        },
+        {
+          "key" : ",",
+          "label" : "Accordion",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace layout accordion horizontal vertical"
+        },
+        {
+          "key" : "f",
+          "label" : "(F)ullscreen",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace fullscreen"
+        },
+        {
+          "key" : "i",
+          "label" : "(I)ncrease size",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace resize smart +50"
+        },
+        {
+          "key" : "d",
+          "label" : "(D)ecrease size",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace resize smart -50"
+        }
+      ],
+      "key" : "w",
+      "label" : "(W)indow",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "p",
+          "label" : "System Settings",
+          "type" : "application",
+          "value" : "/System/Applications/System Settings.app"
+        },
+        {
+          "key" : "l",
+          "label" : "Lock Screen",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/system/lock-screen"
+        }
+      ],
+      "key" : "s",
+      "label" : "(S)ystem",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "h",
+          "label" : "Focus left",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace focus --boundaries-action wrap-around-the-workspace left"
+        },
+        {
+          "key" : "j",
+          "label" : "Focus down",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace focus --boundaries-action wrap-around-the-workspace down"
+        },
+        {
+          "key" : "k",
+          "label" : "Focus up",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace focus --boundaries-action wrap-around-the-workspace up"
+        },
+        {
+          "key" : "l",
+          "label" : "Focus right",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace focus --boundaries-action wrap-around-the-workspace right"
+        }
+      ],
+      "key" : "f",
+      "label" : "(F)ocus",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "h",
+          "label" : "Join left",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace join-with left"
+        },
+        {
+          "key" : "j",
+          "label" : "Join down",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace join-with down"
+        },
+        {
+          "key" : "k",
+          "label" : "Join up",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace join-with up"
+        },
+        {
+          "key" : "l",
+          "label" : "Join right",
+          "type" : "command",
+          "value" : "/opt/homebrew/bin/aerospace join-with right"
+        }
+      ],
+      "key" : "j",
+      "label" : "(J)oin window",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}

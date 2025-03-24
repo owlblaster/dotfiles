@@ -1,0 +1,13 @@
+general.import = [
+    "~/.config/alacritty/themes/gruvbox_dark.toml"
+]
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular"}
+bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold"}
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "italic"}
+size = 12.0
+
+[window]
+decorations = "Buttonless"
+opacity = 0.80

@@ -1,0 +1,368 @@
+let mapleader = " "
+
+" ===================== Plugins ==========================
+Plug 'terryma/vim-multiple-cursors' " multiple cursors
+Plug 'easymotion/vim-easymotion' " easymotion
+Plug 'tpope/vim-surround' " surround with ys
+Plug 'tpope/vim-commentary' " comment with gc
+Plug 'vim-scripts/ReplaceWithRegister' " replace with register
+Plug 'vim-scripts/argtextobj.vim' " text object for arguments
+Plug 'tommcdo/vim-exchange' " exchange text objects with cx
+Plug 'kana/vim-textobj-entire' " text object for entire buffer with ae
+Plug 'machakann/vim-highlightedyank' " highlight yanked text
+Plug 'justinmk/vim-sneak' " sneak with s
+Plug 'preservim/nerdtree' " NERDTree with <leader>n
+Plug 'dbakker/vim-paragraph-motion' " paragraph motion with { and }
+Plug 'michaeljsmith/vim-indent-object' " text object for indentation levels with ai and ii
+Plug 'chrisbra/matchit' " matchit with %
+
+set peekaboo
+set quickscope
+set which-key
+set notimeout
+
+" Plugins settings --------------------------------------
+let g:argtextobj_pairs="(:),{:},[:],<:>"
+
+" Quickscope settings -----------------------------------
+let g:qs_primary_color = '#f8dada'
+let g:qs_secondary_color = '#00ffa2'
+
+" WhichKey settings -------------------------------------
+" make the popup appear much slower
+let g:WhichKey_DefaultDelay = 600
+" set if the sorting should be case-sensitive or not
+let g:WhichKey_SortCaseSensitive = 'false'
+" close the popup and don't process formerly typed keys
+let g:WhichKey_ProcessUnknownMappings = 'false'
+" do not show vim actions
+let g:WhichKey_ShowVimActions = 'false'
+let g:WhichKey_FontFamily = 'JetBrainsMono Nerd Font'
+
+" Common settings
+set visualbell
+set noerrorbells
+set relativenumber
+set number
+set ignorecase
+set smartcase
+set scrolloff=5 " 5 lines above/below cursor when scrolling
+set incsearch
+set hlsearch
+set clipboard+=unnamed
+set showmode
+
+" IDEA specific settings
+set ideajoin
+set ideaput
+set ideamarks
+set idearefactormode=keep
+
+" Map perso ---------------------------------------------
+nnoremap Y y$
+nnoremap U <C-r>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap * *zzzv
+nnoremap # #zzzv
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+nnoremap cn *Ncgn
+
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+nmap <leader>s <Plug>(easymotion-s)
+
+" Use Q for formatting the current paragraph (or visual selection)
+vmap Q gq
+nmap Q mzgqap`z
+
+" Navigation
+let g:WhichKeyDesc_g_declaration = "gd Go to Declaration"
+nnoremap gd :action GotoDeclaration<cr>
+let g:WhichKeyDesc_g_test = "gt Go to Test"
+nnoremap gt :action GotoTest<cr>
+let g:WhichKeyDesc_g_implementation = "gi Go to Implementation"
+nnoremap gi :action GotoImplementation<CR>
+let g:WhichKeyDesc_g_ignore_gc = "gc"
+let g:WhichKeyDesc_g_ignore_gr = "gr"
+let g:WhichKeyDesc_g_ignore_gpercent = "g%"
+
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+" Closing tabs
+nmap <leader>q :action CloseContent<cr>
+nmap <leader>Q :action ReopenClosedTab<cr>
+
+" Recent
+nmap <leader>rc :action RecentChangedFiles<cr>
+nmap <leader>rf :action RecentFiles<cr>
+
+" ======================== LEADER-E ========================
+" ======================== RECENT FILES ========================
+let g:WhichKeyDesc_RecentFiles = "<leader>e Recent Files"
+nmap <leader>e :action RecentFiles<cr>
+
+" ======================== LEADER-F ========================
+" ======================== FIND ========================
+let g:WhichKeyDesc_find = "<leader>f   Find ..."
+
+let g:WhichKeyDesc_find_in_path = "<leader>ff Find in Files"
+nmap <leader>ff <Action>(FindInPath)
+
+let g:WhichKeyDesc_replace_in_path = "<leader>fr Replace in Files"
+nmap <leader>fr <Action>(ReplaceInPath)
+
+let g:WhichKeyDesc_find_in_file = "<leader>fF Find in Buffer"
+nmap <leader>fF <Action>(Find)
+
+let g:WhichKeyDesc_replace_in_file = "<leader>fR Replace in Buffer"
+nmap <leader>fR <Action>(Replace)
+
+let g:WhichKeyDesc_find_usage = "<leader>fu Find Usages"
+nmap <leader>fu <Action>(FindUsages)
+
+let g:WhichKeyDesc_find_menu = "<leader>fm Find Menu"
+nmap <leader>fm <Action>(FindMenuGroup)
+
+let g:WhichKeyDesc_unhighlight_search_result = "<leader>/ Unhighlight search results"
+nnoremap <leader>/ :noh<cr>
+
+" ======================== LEADER-G ========================
+" ======================== GIT ========================
+let g:WhichKeyDesc_git = "<leader>g  Git ..."
+let g:WhichKeyDesc_git_annotate = "<leader>ga Annotate"
+nmap <leader>ga <Action>(Annotate)
+let g:WhichKeyDesc_git_compare_with_last_version = "<leader>gc Compare with last version"
+nmap <leader>gc <Action>(Compare.LastVersion)
+let g:WhichKeyDesc_git_log = "<leader>gh Show History"
+nmap <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
+let g:WhichKeyDesc_git_log = "<leader>gl Log"
+nmap <leader>gl <Action>(Vcs.Show.Log)
+let g:WhichKeyDesc_git_menu = "<leader>gm Popup Menu"
+nmap <leader>gm <Action>(Vcs.QuickListPopupAction)
+let g:WhichKeyDesc_git_show_change_at_caret = "<leader>gs Show change at caret"
+nmap <leader>gs <Action>(VcsShowCurrentChangeMarker)
+let g:WhichKeyDesc_git_show_local_change= "<leader>gg Show local change"
+nmap <leader>gg <Action>(Vcs.Show.Local.Changes)
+let g:WhichKeyDesc_git_show_previous_change= "<leader>gk Go to previous change"
+nmap <leader>gk <Action>(VcsShowPrevChangeMarker)
+let g:WhichKeyDesc_git_show_next_change= "<leader>gj Go to next change"
+nmap <leader>gj <Action>(VcsShowNextChangeMarker)
+
+" ======================== LEADER-M ========================
+" ======================== MENU ========================
+let g:WhichKeyDesc_menu = "<leader>m   Menu ..."
+
+let g:WhichKeyDesc_menu_show_popup_menu = "<leader>mm Popup Menu"
+nmap <leader>mm <Action>(ShowPopupMenu)
+
+let g:WhichKeyDesc_menu_show_context_actions = "<leader>mc Context Actions Menu"
+nmap <leader>mc <Action>(ShowIntentionActions)
+
+let g:WhichKeyDesc_menu_show_generate_menu = "<leader>mg Generate Menu"
+nmap <leader>mg :action Generate<cr>
+
+" ======================== LEADER-N ========================
+" ======================== NERDTREE ========================
+let g:WhichKeyDesc_NERDTree = "<leader>n    NERDTree"
+nnoremap <leader>n :NERDTreeFocus<CR>
+
+" ======================== LEADER-0 ========================
+" ======================== OPEN ========================
+let g:WhichKeyDesc_open = "<leader>o   Open ..."
+
+let g:WhichKeyDesc_open_action = "<leader>oa Open Action"
+nmap <leader>oa <Action>(GotoAction)
+
+let g:WhichKeyDesc_open_file = "<leader>of Open File"
+nmap <leader>of <Action>(GotoFile)
+
+let g:WhichKeyDesc_open_class = "<leader>oc Open Class"
+nmap <leader>oc <Action>(GotoClass)
+
+let g:WhichKeyDesc_open_endpoint = "<leader>oe Open Endpoint"
+nmap <leader>oe <Action>(GotoUrlAction)
+
+let g:WhichKeyDesc_open_all = "<leader>oo Open All"
+nmap <leader>oo <Action>(SearchEverywhere)
+
+let g:WhichKeyDesc_open_symbol = "<leader>oS Open Symbol"
+nmap <leader>oS <Action>(GotoSymbol)
+
+let g:WhichKeyDesc_open_settings = "<leader>os Open Settings"
+nmap <leader>os <Action>(OpenMinimapSettings)
+
+let g:WhichKeyDesc_open_plugin_settings = "<leader>op Open Plugins Settings"
+nmap <leader>op <Action>(WelcomeScreen.Plugins)
+
+let g:WhichKeyDesc_open_project = "<leader>oP Open Project"
+nmap <leader>oP <Action>(ManageRecentProjects)
+
+let g:WhichKeyDesc_open_text = "<leader>ot Open Text Search"
+nmap <leader>ot <Action>(TextSearchAction)
+
+" Unmap <leader>o<Esc> to avoid inserting an new line when pressing <leader>o and then <Esc>
+let g:WhichKeyDesc_open_escape = "<leader>o<Esc>"
+nnoremap <leader>o<Esc> <Nop>
+
+" ======================== LEADER-R ========================
+" ======================== REFACTORINGS ========================
+let g:WhichKeyDesc_refactore = "<leader>r  Refactore ..."
+
+let g:WhichKeyDesc_refactore_rename = "<leader>rr Rename"
+nmap <leader>rr <Action>(RenameElement)
+
+let g:WhichKeyDesc_refactore_change_signature = "<leader>rs Change Signature"
+nmap <leader>rs <Action>(ChangeSignature)
+
+let g:WhichKeyDesc_refactore_introduce_variable = "<leader>rv Introduce Variable"
+vmap <leader>rv <Action>(IntroduceVariable)
+nmap <leader>rv <Action>(IntroduceVariable)
+
+let g:WhichKeyDesc_refactore_introduce_constant = "<leader>rc Introduce Constant"
+vmap <leader>rc <Action>(IntroduceConstant)
+nmap <leader>rc <Action>(IntroduceConstant)
+
+let g:WhichKeyDesc_refactore_introduce_field = "<leader>rf Introduce Field"
+vmap <leader>rf <Action>(IntroduceField)
+nmap <leader>rf <Action>(IntroduceField)
+
+let g:WhichKeyDesc_refactore_introduce_parameter = "<leader>rp Introduce Parameter"
+vmap <leader>rp <Action>(IntroduceParameter)
+nmap <leader>rp <Action>(IntroduceParameter)
+
+let g:WhichKeyDesc_refactore_extractMethode = "<leader>rm Extract Method"
+vmap <leader>rm <Action>(ExtractMethod)
+nmap <leader>rm <Action>(ExtractMethod)
+
+vmap R :action Refactorings.QuickListPopupAction<cr>
+
+" ======================== LEADER-X ========================
+" ======================== ERROR NAVIGATION ========================
+let g:WhichKeyDesc_error_next_error = "<leader>x Go to next error"
+nmap <leader>x :action GotoNextError<cr>
+let g:WhichKeyDesc_error_previous_error = "<leader>X Go to previous error"
+nmap <leader>X :action GotoPreviousError<cr>
+
+" ======================== LEADER-Z ========================
+" ======================== ZEN MODE ========================
+let g:WhichKeyDesc_zenmode = "<leader>z   Enter Zen Mode"
+nmap <leader>z <Action>(ToggleZenMode)
+
+let g:WhichKeyDesc_distraction_free_mode = "<leader>Z  Enter Distraction Free Mode"
+nmap <leader>Z <Action>(ToggleDistractionFreeMode)
+
+let g:WhichKeyDesc_presentation_mode = "<leader>P  Enter Presentation Mode"
+nmap <leader>P <Action>(TogglePresentationMode)
+
+" View
+nmap <leader>V :action SelectIn<cr>
+nmap <leader>Vp :action SelectInProjectView<cr>
+
+" Misc
+"nmap <leader>rv :action IdeaVim.ReloadVimRc.reload<cr>
+
+nmap <leader>h :action Back<cr>
+"nmap <leader>l :action Forward<cr>
+nmap <leader>l :action RecentLocations<cr>
+
+let g:WhichKeyDesc_find_usage = "<leader>u  Find Usages"
+nmap <leader>u :action FindUsages<cr>
+
+nmap <leader>; :action FileStructurePopup<cr>
+
+let g:WhichKeyDesc_jump_to_last_windows = "<leader>p  Jump to last window"
+nmap <leader>p <Action>(JumpToLastWindow)
+
+let g:WhichKeyDesc_bookmark = "<leader>b  Bookmarks"
+nmap <leader>b <Action>(ShowBookmarks)
+
+let g:WhichKeyDesc_show_hover_info = "<leader>d  Quick Documentation and Error Description"
+nmap <leader>d <Action>(ShowHoverInfo)
+
+let g:WhichKeyDesc_show_error_description = "<leader>D  Show error description"
+nmap <leader>D <Action>(ShowErrorDescription)
+
+let g:WhichKeyDesc_jump_to_line = "<leader><Space>  Jump to line"
+nmap <leader><Space> <Plug>(easymotion-prefix)
+
+let g:WhichKeyDesc_jump_to_word = "<leader>s  Jump to word"
+nmap <leader>s <Plug>(easymotion-s)
+
+" Terminal
+let g:WhichKeyDesc_terminal = "<leader>T   Terminal"
+nmap <leader>T <Action>(ActivateTerminalToolWindow)
+
+" unimpaired mappings - from https://github.com/saaguero/ideavimrc/blob/master/.ideavimrc
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+
+" Moving lines
+nnoremap <A-j> :action MoveLineDown<CR>
+nnoremap <A-k> :action MoveLineUp<CR>
+
+" Moving statements
+nmap [s :action MoveStatementUp<cr>
+nmap ]s :action MoveStatementDown<cr>
+
+" Debug, Run ...
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+let g:WhichKeyDesc_multi_cursor = "m Multiple Cursors"
+map mc <Plug>NextWholeOccurrence
+let g:WhichKeyDesc_multi_cursor_next_normal = "mc Next Word"
+xmap mc <Plug>NextWholeOccurrence
+
+nmap mn <Plug>NextOccurrence
+let g:WhichKeyDesc_multi_cursor_next_normal = "mc Next"
+xmap mn <Plug>NextOccurrence
+
+xmap ms <Plug>SkipOccurrence
+let g:WhichKeyDesc_multi_cursor_skip = "ms Skip Next"
+xmap mr <Plug>RemoveOccurrence
+let g:WhichKeyDesc_multi_cursor_remove = "mr Remove"
+nmap ma <Plug>AllWholeOccurrences
+let g:WhichKeyDesc_multi_cursor_all_words_normal = "ma All Words"
+xmap ma <Plug>AllWholeOccurrences
+nmap mA <Plug>AllOccurrences
+let g:WhichKeyDesc_multi_cursor_all = "mA All"
+xmap mA <Plug>AllOccurrences
+
+""" View
+let g:WhichKeyDesc_view = "<leader>v View"
+map <leader>vl <Action>(SplitVertically)
+let g:WhichKeyDesc_view_split_vertically = "<leader>vl Split Vertically"
+map <leader>vj <Action>(SplitHorizontally)
+let g:WhichKeyDesc_view_split_down = "<leader>vj Split Down"
+map <leader>vx <Action>(Unsplit)
+let g:WhichKeyDesc_view_unsplit = "<leader>vx Unsplit"
+map <leader>vO <Action>(UnsplitAll)
+let g:WhichKeyDesc_view_unsplit_all = "<leader>vO UnsplitAll"
+map <leader>vo <Action>(CloseAllEditorsButActive)
+let g:WhichKeyDesc_view_close_all_editors_but_active = "<leader>vo Close All"
+map <leader>vm <Action>(ViewMenu)
+let g:WhichKeyDesc_view_menu = "<leader>vm Menu"
+map <leader>vb <Action>(ViewToolButtons)
+let g:WhichKeyDesc_view_buttons = "<leader>vb Tool Buttons"
+map <leader>vM <Action>(MaximizeEditorInSplit)
+let g:WhichKeyDesc_view_maximize = "<leader>vM Maximize"
+map <leader>vp <Action>(TogglePresentationMode) <Action>(TogglePresentationAssistantAction)
+let g:WhichKeyDesc_view_presentation_mode = "<leader>vp Toggle Presentation Mode"
