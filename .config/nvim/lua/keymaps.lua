@@ -84,7 +84,15 @@ vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
+vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
+
 -- IntelliJ like keymap
 vim.keymap.set('n', '<C-M-l>', vim.lsp.buf.format)
+
+-- Disable some default mappings for lsp
+pcall(vim.keymap.del, 'n', 'gra')
+pcall(vim.keymap.del, 'n', 'gri')
+pcall(vim.keymap.del, 'n', 'grn')
+pcall(vim.keymap.del, 'n', 'grr')
 
 -- vim: ts=2 sts=2 sw=2 et

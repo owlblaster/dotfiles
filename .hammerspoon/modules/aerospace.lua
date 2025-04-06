@@ -3,7 +3,7 @@ local function aerospace(arguments)
 end
 
 local function createF14Modal(modifiers, basicActions)
-    local f14Modal = hs.hotkey.modal.new(modifiers, "F14")
+    local f14Modal = hs.hotkey.modal.new(modifiers, "F16")
 
     local function handleKey(event)
         local key = hs.keycodes.map[event:getKeyCode()]
@@ -74,14 +74,14 @@ local basicActions = {
         aerospace({ "join-with", "right" })
     end,
     -- Layout
-    ["/"] = function()
-        aerospace({ "layout", "tiles", "horizontal", "vertical" })
-    end,
-    [";"] = function()
-        aerospace({ "layout", "accordion", "horizontal", "vertical" })
-    end,
     ["p"] = function()
         aerospace({ "layout", "floating", "tiling" })
+    end,
+    [";"] = function()
+        aerospace({ "layout", "v_accordion", "v_tiles" })
+    end,
+    ["/"] = function()
+        aerospace({ "layout", "v_tiles", "h_tiles" })
     end,
     -- Resize
     ["return"] = function()
@@ -98,13 +98,10 @@ local basicActions = {
         aerospace({ "workspace-back-and-forth" })
     end,
     ["w"] = function()
-        aerospace({ "workspace w" })
+        aerospace({ "workspace W" })
     end,
     ["t"] = function()
-        aerospace({ "workspace t" })
-    end,
-    ["t"] = function()
-        aerospace({ "workspace t" })
+        aerospace({ "workspace T" })
     end,
     -- Balance sizes
     ["b"] = function()
@@ -112,7 +109,7 @@ local basicActions = {
     end,
     -- Clear
     ["c"] = function()
-        aerospace({ "flatten-workspace" })
+        aerospace({ "flatten-workspace-tree" })
     end,
     -- Reload config
     ["r"] = function()

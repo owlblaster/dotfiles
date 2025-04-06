@@ -14,8 +14,11 @@ return {
       },
     },
     opts = {
-      notify_on_error = false,
+      log_level = vim.log.levels.DEBUG,
+      notify_on_error = true,
       format_on_save = function(bufnr)
+        -- Print filetype of the current buffer
+        print(vim.bo[bufnr].filetype)
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
@@ -31,6 +34,9 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        html = { 'prettierd' },
+        htmlangular = { 'prettierd' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
