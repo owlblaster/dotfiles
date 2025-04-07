@@ -4,11 +4,15 @@ return {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
     'folke/lazydev.nvim',
+    dependencies = { 'justinsgithub/wezterm-types' },
     ft = 'lua',
     opts = {
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+        -- Load the wezterm types when the `wezterm` module is required
+        -- Needs `justinsgithub/wezterm-types` to be installed
+        { path = 'wezterm-types', mods = { 'wezterm' } },
       },
     },
   },
@@ -63,7 +67,6 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
-          print('LSP: Attaching to buffer', event.buf)
           -- NOTE: Remember that Lua is a real programming language, and as such it is possible
           -- to define small helper and utility functions so you don't have to repeat yourself.
           --
@@ -80,7 +83,7 @@ return {
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          -- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
@@ -242,6 +245,7 @@ return {
           },
         },
         html = {},
+        yamlls = {},
         helm_ls = {},
         angularls = {
           root_dir = require('lspconfig.util').root_pattern('angular.json', 'project.json'),
