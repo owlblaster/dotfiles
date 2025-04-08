@@ -10,7 +10,7 @@ config.font = wezterm.font_with_fallback({
 	"JetBrainsMono Nerd Font",
 	"Noto Sans",
 })
-config.font_size = 18.0
+config.font_size = 12.0
 
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"

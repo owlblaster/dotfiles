@@ -4,7 +4,6 @@ return {
   opts = {
     ---@type lspconfig.options
     servers = {
-      -- pyright will be automatically installed with mason and loaded with lspconfig
       angularls = {
         root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json"),
       },
