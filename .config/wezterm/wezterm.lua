@@ -6,11 +6,29 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
+local function get_font_size()
+	local success, output = wezterm.run_child_process({ "system_profiler", "SPDisplaysDataType" })
+	if not success then
+		return 12 -- Default font size if resolution detection fails
+	end
+
+	if output:match("1920 x ") then
+		return 12
+	elseif output:match("2560 x ") then
+		return 14
+	elseif output:match("5120 x ") then
+		return 16
+	else
+		wezterm.log_error("Unknown resolution detected, using default font size.")
+		return 12 -- Default for unknown resolutions
+	end
+end
+
 config.font = wezterm.font_with_fallback({
 	"JetBrainsMono Nerd Font",
 	"Noto Sans",
 })
-config.font_size = 12.0
+config.font_size = get_font_size()
 
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
